@@ -20,6 +20,11 @@ function FeachImage({name}) {
     const [largeImage, setLargeImage] = useState('');
     const [alt, setAlt] = useState('');
 
+      window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+                });
+
     const setState = (res) => {
         setImages(res);
         setIsVisible(true);
@@ -35,11 +40,6 @@ function FeachImage({name}) {
             .then(res => res.hits.length === 0 ? clearList() :
                 setState(res.hits))
             .catch(error => console.log(error)).finally(() => setLoading(false))
-        
-         window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth',
-                });
     }, [name])
 
      const toggleModal = (largeImageURL='',largeImageAlt='') => {
